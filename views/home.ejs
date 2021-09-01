@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.socket.io/4.1.2/socket.io.min.js" 
+    integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        #msg-section{
+            padding-bottom: 40px;
+            position: relative;
+        }
+        .chat{
+            margin: 0.4rem;
+            padding: 6px 12px;
+            width: max-content;
+            min-width: 100px;
+            border-radius: 4px;
+            max-width: 400px;
+            position: relative;
+        }
+        .from{
+            background-color: #a18ed6;
+            color: #211e29;
+            right: -100%;
+            box-shadow: 2px 2px 4px 3px #2a2a2b;
+            transform: translateX(-102%);
+        }
+        
+        .to{
+            background-color: #bfb8d1;
+            color: #211e29;
+            box-shadow: 2px 2px 4px 3px #2a2a2b;
+            animation: sendMsg 0.2s linear;
+        }
+
+        .to span{
+            color: #1f62df;
+            font-weight: 700;
+        }
+
+        .noti{
+            /* background-color: #c7c7c9; */
+            /* color: #242429; */
+            /* border-radius: 10px; */
+            padding: 2px 2px !important;
+            border: 1px solid ;
+            right: -50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+            border-radius: 0;
+            text-transform: capitalize;
+            animation: roomMsg 0.3s linear;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Erica+One&display=swap');
+        .before-start{
+            background-color: #211e29;
+            color: aliceblue;
+            font-family: 'Erica One', cursive;
+            font-size: 40px;
+            font-weight: 900;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        .before-start h1{
+            font-size: 5rem;
+            display: flex;
+            justify-content: center;
+            padding-top: 20%;
+            align-items: center;
+        }
+
+        #always-down{
+            position: absolute;
+            bottom: 10px;
+            color: #aca69d;
+        }
+
+        @keyframes sendMsg {
+            0%{
+                opacity: 0;
+                left:-100%;
+            }   
+            100%{
+                opacity: 1;
+                left: 0;
+            }         
+        }
+
+        @keyframes roomMsg {
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark" onload="askName()">
+    <div class="container bg-white text-dark mt-5 border-danger rounded">
+        <h2 class="display-4 border-bottom border-dark text-center">Chat Room</h2>
+        <h4>Joined as <strong id="username"></strong></h4>
+        <p>There are <strong id="member-Count">1</strong> Online</p>
+        <div id="main-msg-section" class="container overflow-auto p-2 rounded" style="min-height: 70vh; max-height: 70vh; background-color: #3e3752; color: aliceblue;">
+            <div id="msg-section">
+                <div id="always-down">
+                </div>
+            </div>
+        </div>
+        <div class="container pb-2 pt-2">
+            <form action="" id="chat-form">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Your message.." aria-label="Recipient's username" aria-describedby="basic-addon2" id="actual-msg">
+                    <div class="input-group-append">
+                      <button class="input-group-text badge-dark" id="basic-addon2">Send&nbsp;</button>
+                    </div>
+                  </div>
+                  Join the Specific Room
+                    <select class="form-select" aria-label="Default select example" id="room-id">
+                        <option value="public" selected>Public</option>
+                        <option value="sports">Sports</option>
+                        <option value="news">News</option>
+                        <option value="tech">Tech</option>
+                        <option value="fashion">fashion</option>
+                      </select>
+            </form>
+        </div>
+    </div>
+    <div class="before-start" id="hider">
+        <h1>
+            Fill Your name 🙂!!!
+        </h1>
+    </div>
+</body>
+<script src="/script.js"></script>
+</html>
+
