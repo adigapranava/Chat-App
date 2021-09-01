@@ -7,15 +7,19 @@ A chat Application made using socket.io. User can join any room and chat!!!
 ```console
 git clone https://github.com/adigapranava/Chat-App.git
 ```
+2 Move to the Directory
+```console
+cd Chat-App
+```
 
-2 Install the required packages
+3 Install the required packages
 ```console
 npm install
 ```
 
-3 Run the `index.js` file
+4 Run the `index.js` file
 ```console
 node index.js
 ```
 
-4 Go to `http://localhost:3001/`
+5 Go to `http://localhost:3001/`
